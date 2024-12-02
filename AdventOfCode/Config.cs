@@ -2,5 +2,8 @@
 
 public static class Config
 {
-    public static readonly string BasePath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+    private static readonly string BasePath =
+        Directory.GetParent(Directory.GetCurrentDirectory())!.Parent!.Parent!.FullName;
+
+    public static readonly string InputPath = Path.GetFullPath(Path.Combine(BasePath, "Inputs"));
 }

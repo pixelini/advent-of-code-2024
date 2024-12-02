@@ -1,26 +1,25 @@
-﻿namespace AdventOfCode.First;
+﻿using AdventOfCode.Base;
 
-public static class First
+namespace AdventOfCode.Solutions;
+
+public class First(string title, string inputFile) : Puzzle(title, inputFile)
 {
-    private const string Title = "--- Day 1: Historian Hysteria ---";
-
-    private const string InputFilePathRelative = @"First\01_input.txt";
-
     private static int SolutionPart1 { get; set; }
-    
+
     private static int SolutionPart2 { get; set; }
-    
-    public static void ShowSolution()
+
+    public override void ShowSolution()
     {
-        CalculateSolutionPart1();
-        CalculateSolutionPart2();
-        
+        SolvePart1();
+        SolvePart2();
+        Solved = true;
+
         Console.WriteLine(Title);
         Console.WriteLine($"Solution Part 1: Total distance: {SolutionPart1}.");
         Console.WriteLine($"Solution Part 2: Similarity score: {SolutionPart2}.");
     }
 
-    private static void CalculateSolutionPart1()
+    private void SolvePart1()
     {
         var (left, right) = GetLeftAndRightList();
 
@@ -36,7 +35,7 @@ public static class First
         SolutionPart1 = sumDistances;
     }
 
-    private static void CalculateSolutionPart2()
+    private void SolvePart2()
     {
         var (left, right) = GetLeftAndRightList();
 
@@ -48,13 +47,13 @@ public static class First
 
             similarityScore += numberToCount * appearances;
         }
-        
+
         SolutionPart2 = similarityScore;
     }
 
-    private static (List<int> left, List<int> right) GetLeftAndRightList()
+    private (List<int> left, List<int> right) GetLeftAndRightList()
     {
-        var fullPath = Path.GetFullPath(Path.Combine(Config.BasePath, InputFilePathRelative));
+        var fullPath = Path.GetFullPath(Path.Combine(Config.InputPath, InputFile));
         using StreamReader reader = new StreamReader(fullPath);
 
         var left = new List<int>();

@@ -1,5 +1,8 @@
-﻿using AdventOfCode.First;
+﻿using AdventOfCode;
 
-Console.WriteLine("Welcome to the my Advent Of Code 2024!\n");
+Console.WriteLine("Welcome to my Advent Of Code 2024!");
+Console.WriteLine();
 
-First.ShowSolution();
+var adventCalendar = new AdventCalender();
+adventCalendar.Run();
+adventCalendar.ShowStats();
