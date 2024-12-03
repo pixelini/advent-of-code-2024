@@ -8,7 +8,8 @@ public class AdventCalender
     private List<Puzzle> Puzzles { get; } =
     [
         new First("--- Day 1: Historian Hysteria ---", "01_input.txt"),
-        new Second("--- Day 2: Red-Nosed Reports ---", "02_input.txt")
+        new Second("--- Day 2: Red-Nosed Reports ---", "02_input.txt"),
+        new Third("--- Day 3: Mull It Over ---", "03_input.txt")
     ];
 
     public void Run()

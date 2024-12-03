@@ -4,22 +4,23 @@ namespace AdventOfCode.Solutions;
 
 public class Second(string title, string inputFile) : Puzzle(title, inputFile)
 {
-    private static int SolutionPart1 { get; set; }
+    private int SolutionPart1 { get; set; }
 
-    private static int SolutionPart2 { get; set; }
+    private int SolutionPart2 { get; set; }
 
     public override void ShowSolution()
     {
-        SolvePart1();
-        SolvePart2();
-        Solved = true;
+        if (SolvePart1() && SolvePart2())
+        {
+            Solved = true;
+        }
 
         Console.WriteLine(Title);
         Console.WriteLine($"Solution Part 1: How many reports are safe? {SolutionPart1}");
         Console.WriteLine($"Solution Part 2: How many reports are now safe? {SolutionPart2}");
     }
 
-    private void SolvePart1()
+    private bool SolvePart1()
     {
         var reports = GetReports();
 
@@ -33,9 +34,10 @@ public class Second(string title, string inputFile) : Puzzle(title, inputFile)
         }
 
         SolutionPart1 = saveReports;
+        return true;
     }
 
-    private void SolvePart2()
+    private bool SolvePart2()
     {
         var reports = GetReports();
 
@@ -63,6 +65,7 @@ public class Second(string title, string inputFile) : Puzzle(title, inputFile)
         }
 
         SolutionPart2 = saveReports;
+        return true;
     }
 
     private List<List<int>> GetReports()

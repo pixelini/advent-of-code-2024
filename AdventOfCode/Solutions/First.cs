@@ -4,22 +4,23 @@ namespace AdventOfCode.Solutions;
 
 public class First(string title, string inputFile) : Puzzle(title, inputFile)
 {
-    private static int SolutionPart1 { get; set; }
+    private int SolutionPart1 { get; set; }
 
-    private static int SolutionPart2 { get; set; }
+    private int SolutionPart2 { get; set; }
 
     public override void ShowSolution()
     {
-        SolvePart1();
-        SolvePart2();
-        Solved = true;
+        if (SolvePart1() && SolvePart2())
+        {
+            Solved = true;
+        }
 
         Console.WriteLine(Title);
-        Console.WriteLine($"Solution Part 1: Total distance: {SolutionPart1}.");
-        Console.WriteLine($"Solution Part 2: Similarity score: {SolutionPart2}.");
+        Console.WriteLine($"Solution Part 1: Total distance: {SolutionPart1}");
+        Console.WriteLine($"Solution Part 2: Similarity score: {SolutionPart2}");
     }
 
-    private void SolvePart1()
+    private bool SolvePart1()
     {
         var (left, right) = GetLeftAndRightList();
 
@@ -33,9 +34,10 @@ public class First(string title, string inputFile) : Puzzle(title, inputFile)
         }
 
         SolutionPart1 = sumDistances;
+        return true;
     }
 
-    private void SolvePart2()
+    private bool SolvePart2()
     {
         var (left, right) = GetLeftAndRightList();
 
@@ -49,6 +51,7 @@ public class First(string title, string inputFile) : Puzzle(title, inputFile)
         }
 
         SolutionPart2 = similarityScore;
+        return true;
     }
 
     private (List<int> left, List<int> right) GetLeftAndRightList()
